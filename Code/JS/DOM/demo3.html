@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Catch and add value</h2>
+    <input type="text" id="value1" />
+    <input type="text" id="value2" />
+    <button onclick="sumItem()"> Value</button>
+    <p id="result"></p>
+</body>
+<script>
+    const sumItem = () => {
+        const value1 = Number(document.getElementById("value1").value);
+        const value2 = Number(document.getElementById("value2").value);
+        const resultSum = value1 + value2;
+        // display data
+        document.getElementById("result").innerHTML = "Result : " + resultSum;
+        // chage color result
+        document.getElementById("result").style.color = "red"
+    }
+</script>
+
+</html>

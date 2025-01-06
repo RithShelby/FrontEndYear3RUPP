@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo 2</title>
+    <style>
+        .student {
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .student:hover {
+            background-color: lightgray;
+        }
+
+        .student.active {
+            background-color: blue;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="list"></div>
+
+    <script>
+        const studentData = [
+            { id: 1, name: "John" },
+            { id: 2, name: "Kaka" },
+            { id: 3, name: "John Doe" }
+        ];
+
+        const listDiv = document.getElementById('list');
+
+        function setActiveItem(id) {
+            const items = document.querySelectorAll('.student');
+            items.forEach(item => item.classList.remove('active')); // Remove active class from all items
+
+            const activeItem = document.querySelector(`#item-${id}`);
+            if (activeItem) {
+                activeItem.classList.add('active'); // Add active class to the clicked item
+            }
+        }
+
+        // Map studentData to create div elements
+        studentData.forEach(student => {
+            const div = document.createElement('div');
+            div.id = `item-${student.id}`;
+            div.textContent = student.name;
+            div.className = 'student'; // Add the 'student' class for styling
+
+            // Add click event to make it active
+            div.addEventListener('click', () => setActiveItem(student.id));
+
+            listDiv.appendChild(div);
+        });
+    </script>
+</body>
+
+</html>

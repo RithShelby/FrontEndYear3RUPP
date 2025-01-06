@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Demo</title>
+    <style>
+        .active {
+            background-color: blue;
+            color: white;
+        }
+
+        .hover {
+            background-color: gray;
+            cursor: pointer;
+        }
+
+        li {
+            list-style: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h2>Create Item</h2>
+        <ul id="list">
+            <!-- Items will be added here -->
+        </ul>
+        <button id="addBtn">Add Item</button>
+    </div>
+    <script>
+        let itemCount = 0;
+
+        // Function to create a new list item
+        const createItem = () => {
+            itemCount++;
+            const newItem = document.createElement("li");
+            newItem.textContent = "Item " + itemCount;
+            return newItem;
+        };
+
+        // Function to add event listeners for hover and click
+        const selectItem = (item) => {
+            // Add hover events
+            item.addEventListener("mouseover", () => {
+                item.classList.add("hover");
+            });
+
+            item.addEventListener("mouseout", () => {
+                item.classList.remove("hover");
+            });
+
+            // Add click event
+            item.addEventListener("click", () => {
+                // Remove 'active' class from all items
+                document.querySelectorAll("li").forEach(el => el.classList.remove("active"));
+                // Add 'active' class to the clicked item
+                item.classList.add("active");
+            });
+        };
+
+        // Event listener to add new items to the list
+        document.getElementById("addBtn").addEventListener("click", () => {
+            const newItem = createItem(); // Create a new item
+            selectItem(newItem); // Add event listeners to the new item
+            document.getElementById("list").appendChild(newItem); // Append the new item to the list
+        });
+    </script>
+</body>
+
+</html>
