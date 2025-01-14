@@ -1,15 +1,8 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const navbar = document.querySelector(".navbar");
-  const main = document.querySelector("main");
-
-  function adjustMainPadding() {
-    const navbarHeight = navbar.offsetHeight;
-    main.style.paddingTop = `${navbarHeight}px`;
+window.onscroll = function () {
+  var navbar = document.querySelector(".navbar");
+  if (window.scrollY > 200) {
+    navbar.classList.add("navbar-scrolled");
+  } else {
+    navbar.classList.remove("navbar-scrolled");
   }
-
-  // Adjust on page load
-  adjustMainPadding();
-
-  // Adjust when the window is resized
-  window.addEventListener("resize", adjustMainPadding);
-});
+};
